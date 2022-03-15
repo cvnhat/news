@@ -4,5 +4,6 @@ const router = express.Router();
 const siteController = require('../app/controllers/SiteController');
 
 ///////////////////////////////////////
-router.get('/', siteController.index);
+router.get('/:id', siteController.show)
+router.get('/', siteController.home);
 module.exports = router;

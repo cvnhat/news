@@ -12,13 +12,14 @@ const app = express();
 const port = 3000;
 
 const route = require('./routes');
-//const db = require('./config/db');
+const db = require('./config/db');
 
 //Connect to DB
-//db.connect();
+db.connect();
 
 //app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')));
+console.log(path.join(__dirname, '/public'))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -34,7 +35,6 @@ app.engine('hbs', engine({
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
-
 hbs.handlebars.registerHelper( "when",function(operand_1, operator, operand_2, options) {
     var operators = {
      'eq': function(l,r) { return l == r; },
