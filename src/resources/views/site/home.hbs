@@ -45,11 +45,11 @@
                                 <div class="col-66 l-content">
                                     {{#post1}}
                                     <article class="story story--primary">
-                                        <a href="#" class="story__thumb--img">
+                                        <a href="/{{slug}}" class="story__thumb--img">
                                             <img src="/images/{{image}}" alt="anh story" class="story__thumb_img">
                                         </a>
                                         <div class="story__thumb--text">
-                                            <h1 class="story__thumb-text"><a href="#"> {{title}}</a></h1>
+                                            <h1 class="story__thumb-text"><a href="/{{slug}}"> {{title}}</a></h1>
                                             <div class="story__thumb_info">
                                                 <div class="story__thumb_time">{{createAt}}</div>
                                                 <div class="story_thumb_dash"> - </div>
@@ -65,10 +65,10 @@
                                 <div class="col-33 editor-pick scroll-style">
                                     {{#post1}}
                                     <article class="story">
-                                        <a href="#" class="story__thumb--img">
+                                        <a href="/{{slug}}" class="story__thumb--img">
                                             <img src="/images/{{image}}" alt="anh story" class="story__thumb_img">
                                         </a>
-                                        <a href="#" class="story__thumb--text">
+                                        <a href="/{{slug}}" class="story__thumb--text">
                                             <h1 class="story__thumb-text"><a href="#">
                                                 <span class="icon__play"><i class="fas fa-play-circle"></i></span>
                                                 {{title}}</a></h1>

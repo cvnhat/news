@@ -7,23 +7,23 @@ class AdminController{
     }
 
     //[GET] /products/:id/edit
-    editProduct(req, res, next) {
-        Menu.findById(req.params.id).lean()
-            .then(product => res.render('admin/products/edit-products', {product}))
+    editPost(req, res, next) {
+        APost.findOne({slug: req.params.slug}).lean()
+            .then(post => res.render('admin/edit-posts', {post}))
             .catch(next)                      
     }
 
     //[GET] /admin/stored/products
-     storedProducts(req, res, next){
-        Promise.all([Menu.find({}).lean(), Menu.countDocumentsDeleted()])
-            .then(([products, deletedCount]) => res.render('admin/products/stored-products', {deletedCount, products}))
+     storedPost(req, res, next){
+        Promise.all([APost.find({}).lean(), APost.countDocumentsDeleted()])
+            .then(([posts, deletedCount]) => res.render('admin/stored-posts', {deletedCount, posts}))
             .catch(next);
        }
 
     //[GET] /admin/trash/products
-    trashProducts(req, res, next){
-        Menu.findDeleted({}).lean()
-            .then(products => res.render('admin/products/trash-products', {products}))
+    trashPosts(req, res, next){
+        APost.findDeleted({}).lean()
+            .then(posts => res.render('admin/trash-posts', {posts}))
             .catch(next);
     }
 

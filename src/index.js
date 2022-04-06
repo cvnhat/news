@@ -4,7 +4,7 @@ const express = require('express');
 //const morgan=require('morgan')
 const handlebars = require('express-handlebars');
 const { engine } = require ('express-handlebars');
-// const methodOverride = require('method-override');
+const methodOverride = require('method-override');
 //const jwt = require('jsonwebtoken');
 //const cookieParser = require('cookie-parser')
 var hbs = handlebars.create({});
@@ -25,7 +25,7 @@ app.use(express.json());
 
 //HTTP logger
 //app.use(morgan('combined'));
-//app.use(methodOverride('_method'))//OverRideMethod
+app.use(methodOverride('_method'))//OverRideMethod
 //Template Engine
 app.engine('hbs', engine({ 
          extname: '.hbs',

@@ -12,35 +12,35 @@ class PostController {
         const videoId=req.body.videoId
         const apost=new APost({title, content, type, image, email, like, videoId})
         apost.save()
-       .then(() => res.json(post => {post}))
-        //.then(() => res.redirect('/admin/stored/posts'))
+       //.then(() => res.json(post => {post}))
+        .then(() => res.redirect('/admin/stored/posts'))
         .catch(error => {})
     }
     
-    //[PUT] /products/:id
+    //[PUT] 
     update(req, res, next) {
-        Menu.updateOne({_id: req.params.id}, req.body)
-            .then(() => res.redirect("/admin/stored/products"))
-            .catch(next)    
+        APost.updateOne({slug: req.params.slug}, req.body)
+            .then(() => res.redirect("/admin/stored/posts"))
+            .catch(next) 
         
     }
-    //[DELETE] /product/:id
+    //[DELETE] 
     destroy(req, res, next) {
-        Menu.delete({_id: req.params.id})
+        APost.delete({slug: req.params.slug})
         .then(() => res.redirect('back'))
         .catch(next)
     }
 
-    //[DELETE] /products/:id/force
+    //[DELETE] 
     forceDestroy(req, res, next) {
-        Menu.deleteOne({_id: req.params.id})
+        APost.deleteOne({slug: req.params.slug})
         .then(() => res.redirect('back'))
         .catch(next)
     }
 
-    //[PATCH] /cources/:id/restore
+    //[PATCH] 
     restore(req, res, next) {
-        Menu.restore({_id: req.params.id})
+        APost.restore({slug: req.params.slug})
         .then(() => res.redirect('back'))
         .catch(next)
     }

@@ -15,16 +15,19 @@ class SiteController {
         //         .catch(next);
         // }
         Promise.all([APost.find().limit(1).lean(),APost.find().limit(4).lean()])
-        .then(([post,post1]) => res.render('site/home', {post,post1}))
+        .then(([post, post1]) => res.render('site/home', {post,post1}))
         .catch(next);
     }
+
      // GET /:id
     show(req, res, next) {
-        APost.findOne({slug: req.params.slug }).lean()
-            .then(post => res.render('site/postDetail', {post}))
+        Promise.all([APost.findOne({ slug: req.params.slug }).lean(), APost.find().lean()])
+            .then(([post, post1]) => res.render('site/postDetail', {post, post1}))
             //.then(post => res.json(post))
             .catch(next);
     }
+    
+
 
 }
 module.exports = new SiteController();
